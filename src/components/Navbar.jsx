@@ -23,6 +23,9 @@ function Navbar() {
       {/*    UPDATE     */}
       {getToken() ? (
         <>
+          <Link to="/cars">
+            <button>Cars for Rent</button>
+          </Link>
           <button onClick={logOutUser}>Logout</button>
           {/* <span>{user && user.name}</span> */}
         </>
@@ -42,4 +45,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;;
+export default Navbar;

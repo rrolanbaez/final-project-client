@@ -5,6 +5,9 @@ import HomePage from "./pages/HomePage";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
 
+import CarList from "./components/CarList";
+
+
 function App() {
   const getToken = () => {
     return localStorage.getItem("authToken");
@@ -27,6 +30,7 @@ function App() {
         <Route exact path="/" element={<HomePage />} />
 
         <Route element={<LoggedIn />}>
+          <Route exact path="/cars" element={<CarList />} />
 
 
 
