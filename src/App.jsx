@@ -6,6 +6,9 @@ import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
 
 import CarList from "./components/CarList";
+import EditCarPage from "./pages/EditCarPage";
+import CarDetailsPage from "./pages/CarDetailsPage";
+import AddCar from "./components/AddCar";
 
 
 function App() {
@@ -31,6 +34,9 @@ function App() {
 
         <Route element={<LoggedIn />}>
           <Route exact path="/cars" element={<CarList />} />
+          <Route exact path="/cars/details/:carId" element={<CarDetailsPage />} />
+          <Route exact path="/cars/edit/:carId" element={<EditCarPage />} />
+          <Route exact path ="/cars/addcar" element={<AddCar />}/>
 
 
 

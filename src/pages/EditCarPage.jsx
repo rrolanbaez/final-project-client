@@ -1,13 +1,10 @@
-import { useState } from "react";
-import { post } from "../services/authService";
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
-import { useNavigate } from "react-router-dom";
+import { get, put, axiosDelete } from "../services/authService";
 
-import axios from "axios";
+function EditCarPage() {
 
-function AddCar() {
-
-    //const [car, setCar] = useState(""); // NOT SURE IF I NEED THIS HERE???
     const [make, setMake] = useState("");
     const [model, setModel] = useState("");
     const [year, setYear] = useState("");
@@ -17,46 +14,61 @@ function AddCar() {
     const [basics, setBasics] = useState("");
     const [images, setImages] = useState("");
     const [description, setDescription] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
+
+    const { carId } = useParams();
 
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleFormSubmit = (e) => {
         e.preventDefault();
 
-        const requestBody = { 
-            make,
-            model,
-            year,
-            pricePerDay,
-            location,
-            features,
-            basics,
-            images,
-            description,
-        };
+        const requestBody = {make, model, year, pricePerDay, location, features, basics, images, description};
 
-        post('/cars', requestBody)
+        put(`/cars/update/${carId}`, requestBody)
             .then((response) => {
-                setMake("");
-                setModel("");
-                setYear("");
-                setPricePerDay("");
-                setLocation("");
-                setFeatures("");
-                setBasics("");
-                setImages("");      // nose si las imagenes funciona diferente
-                setDescription("");
-                // refreshCars();
-                navigate("/cars");
+                navigate(`/cars/details/${carId}`);
             })
-            .catch((error) => console.log(error));
+            .catch((err) => {
+                setErrorMessage(err.response.data.message)
+                console.log(err)
+            });
     };
 
-    return (
+    const deleteCar = () => {
+        axiosDelete(`/cars/delete/${carId}`)
+            .then(() => {
+                navigate('/cars');
+            })
+            .catch((err) => {
+                setErrorMessage(err.response.data.message)
+                console.log(err)
+            });
+    };
 
-        <div className="AddCar container mt-5">
-            <h2>Add a Car</h2>
-            <form onSubmit={handleSubmit}>
+    useEffect(() => {
+        get(`/cars/details/${carId}`)
+            .then((response) => {
+                const oneCar = response.data;
+
+                setMake(oneCar.make);
+                setModel(oneCar.model);
+                setYear(oneCar.year);
+                setPricePerDay(oneCar.pricePerDay);
+                setLocation(oneCar.location);
+                setFeatures(oneCar.features);
+                setBasics(oneCar.basics);
+                setImages(oneCar.images);      // nose si las imagenes funciona diferente
+                setDescription(oneCar.description);
+            })
+            .catch((err) => console.log(err));
+    }, [carId]);
+
+    return (
+        <div className="EditCarPage container mt-5">
+            <h2>Edit Car Information</h2>
+
+            <form onSubmit={handleFormSubmit}>
                 <div className="mb-3">
                     <label htmlFor="make" className="form-label">Make:</label>
                     <input
@@ -166,11 +178,14 @@ function AddCar() {
                     />
                 </div>
 
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button type="submit" className="btn btn-primary">Update Car</button>
             </form>
+
+            <button type="submit" className="btn btn-danger" onClick={deleteCar}>Delete Car</button>
+
+            {errorMessage && <p>{errorMessage}</p>}
         </div>
-    )
+    );
+};
 
-}
-
-export default AddCar; 
+export default EditCarPage; 
