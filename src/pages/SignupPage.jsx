@@ -14,12 +14,11 @@ function SignupPage() {
     email: "",
     password: "",
     name: "",
+    role:"",
   });
 
   const [errorMessage, setErrorMessage] = useState(undefined);
-
-  const { storeToken, authenticateUser } = useContext(AuthContext);
-
+  const { storeToken, authenticateUser, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
   //   const handleEmail = (e) => setEmail(e.target.value);
@@ -32,6 +31,12 @@ function SignupPage() {
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
+
+    // to make sure a role is selected
+    if (!newUser.role) {
+      setErrorMessage("Please select a role");
+      return;
+    }
 
     post("/auth/signup", newUser)
       .then((response) => {
@@ -47,6 +52,7 @@ function SignupPage() {
             email: "",
             password: "",
             name: "",
+            role: ""
           })
       });
   };
@@ -79,6 +85,18 @@ function SignupPage() {
           value={newUser.name}
           onChange={handleTextChange}
         />
+
+        <label>Role:</label>
+        <select
+          name="role"
+          value={newUser.role}
+          onChange={handleTextChange}
+          required
+        >
+          <option value="">Select your role</option>
+          <option value="host">Host</option>
+          <option value="client">Client</option>
+        </select>
 
         <button type="submit">Sign Up</button>
       </form>

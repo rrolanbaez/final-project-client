@@ -1,13 +1,11 @@
 import { useState } from "react";
 import { post } from "../services/authService";
-
 import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
 
 function AddCar() {
 
-    //const [car, setCar] = useState(""); // NOT SURE IF I NEED THIS HERE???
     const [make, setMake] = useState("");
     const [model, setModel] = useState("");
     const [year, setYear] = useState("");
@@ -46,7 +44,6 @@ function AddCar() {
                 setBasics("");
                 setImages("");      // nose si las imagenes funciona diferente
                 setDescription("");
-                // refreshCars();
                 navigate("/cars");
             })
             .catch((error) => console.log(error));

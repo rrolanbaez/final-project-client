@@ -1,11 +1,8 @@
 // src/pages/LoginPage.jsx
 
 import { useState, useContext } from "react";
-
 import { AuthContext } from "../context/auth.context";
-
 import { Link, useNavigate } from "react-router-dom";
-
 import { post } from "../services/authService";
 
 function LoginPage() {
@@ -18,7 +15,6 @@ function LoginPage() {
   });
 
   const [errorMessage, setErrorMessage] = useState(undefined);
-
   const { storeToken, authenticateUser } = useContext(AuthContext);
 
   const navigate = useNavigate();
