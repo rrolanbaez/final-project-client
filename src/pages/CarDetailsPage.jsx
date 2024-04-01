@@ -46,25 +46,21 @@ function CarDetailsPage(props) {
       {car && (
         <>
           <h3>{car.make}</h3>
-          <p>{car.model}</p>
-          <p>{car.year}</p>
-          <p>{car.pricePerDay}</p>
-          <p>{car.location}</p>
-          <p>{car.features.join(", ")}</p>
-          <p>{car.basics.join(", ")}</p>
+          <p>Model: {car.model}</p>
+          <p>Year: {car.year}</p>
+          <p>$ {car.pricePerDay} / day</p>
+          <p>Pick up: {car.location}</p>
+          <p>Features: {car.features.join(", ")}</p>
+          <p>Basics: {car.basics.join(", ")}</p>
 
           {/* not sure if this will work for the imgs */}
           {car.images.map((photo) => {
             return (
-              <img
-                src={photo}
-                alt="car"
-                style={{ width: "200px", height: "150px" }}
-              />
+              <img src={photo} alt="car" style={{ width: "200px", height: "150px" }}/>
             );
           })}
 
-          <p>{car.description}</p>
+          <p>Description: {car.description}</p>
         </>
       )}
 

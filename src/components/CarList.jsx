@@ -1,7 +1,8 @@
 import { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
+
 import { AuthContext } from "../context/auth.context";
 import { get } from "../services/authService";
-import { Link } from "react-router-dom";
 
 import CarCard from "./CarCard";
 //import AddCar from "./AddCar";    // no quiero que salga este form en la lista de carros, CAMBIAR DESPUES
@@ -9,8 +10,7 @@ import CarCard from "./CarCard";
 function CarList() {
 
     const [cars, setCars] = useState([]);
-
-    const { user } = useContext(AuthContext)
+    const { user } = useContext(AuthContext);
 
     const getAllCars = () => {
 
@@ -23,13 +23,10 @@ function CarList() {
             .then((response) => {
 
                 let theseCars = response.data.filter((car) => car.owner == user._id )
-                     
                 setCars(theseCars)
-            
             })
             .catch((err) => console.log(err));
         }
-
     };
 
     useEffect(() => {
@@ -43,9 +40,15 @@ function CarList() {
             ))}
 
             {/* <AddCar refreshCars={getAllCars} /> */}
-            <div className="text-center">
+            {/* <div className="text-center">
                 <Link to={"/cars/addcar"} className="btn btn-primary">Add Car</Link>
-            </div>
+            </div> */}
+
+            {user && user.role !== 'client' && ( // Only show the Add Car link to users who are not clients
+                <div className="text-center">
+                    <Link to={"/cars/addcar"} className="btn btn-primary">Add Car</Link>
+                </div>
+            )}
         </div>
     )
 };

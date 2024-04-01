@@ -87,9 +87,12 @@ function Navbar() {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <button className="btn" onClick={() => { logOutUser(); handleNavLinkClick(); }}>
-                    Logout
-                  </button>
+                  {/* <button className="btn" onClick={() => { logOutUser(); handleNavLinkClick(); }}>
+                    Logout            --> SE VE DIFFERENTE SI ESTA ASI
+                  </button> */}
+                  <Link className="nav-link" to="/" onClick={() => { logOutUser(); handleNavLinkClick(); }}>
+                    Log Out
+                  </Link>
                 </li>
               </>
             ) : (
@@ -101,7 +104,7 @@ function Navbar() {
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/login" onClick={handleNavLinkClick}>
-                    Login
+                    Log in
                   </Link>
                 </li>
               </>

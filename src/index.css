@@ -47,6 +47,7 @@ nav li {
   font-weight: 600;
 } */
 
+/* SIGN UP & LOG IN PAGE */
 .SignupPage,
 .LoginPage {
   background: #f9eec3;
@@ -58,23 +59,28 @@ nav li {
   margin-bottom: 20px;
   padding: 10px;
   border-radius: 4px;
+
+  margin-top: 100px;
+}
+
+/* LOG IN PAGE BTNS BOOTSTRAP */
+.btn-custom-login, .btn-custom-signup {
+  background-color: #C1FF72 !important; 
+  border-color: black !important;
+}
+
+.btn-custom-login:hover, .btn-custom-signup:hover {
+  background-color: #b0e967 !important;
+  border-color: #b0e967 !important;
 }
 
 
-.SignupPage {
-  background-color: #C1FF72;
-}
-
-.LoginPage {
-  background-color: #C1FF72;
-}
-
-.SignupPage form,
+/* .SignupPage form,
 .LoginPage form {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+} */
 
 /* NAVBAR */
 .navbar.navbar-light.bg-light.navbar-custom {
@@ -91,3 +97,69 @@ nav li {
   font-size: 24px;
   font-weight: bold;
 }
+
+/* HOME PAGE */
+.home-page{
+  background-color: black;
+  color: white;
+}
+
+.content{
+  background-color: #C1FF72;
+  color: black;
+  padding: 100px;
+}
+
+/* CAR CARD */
+.CarCard {
+  display: flex;
+  flex-direction: column; /* Stack the text and image sections vertically */
+  max-width: 800px; /* Adjust max-width as needed */
+  margin: 20px auto; /* Adds top/bottom margin and auto margin for centering horizontally */
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background: #ffffff;
+  align-items: center; /* Center-align the items if the flex-direction is column */
+}
+
+.card-body {
+  width: 100%; /* Ensures the card body fills the card */
+  display: flex;
+  flex-direction: row; /* Adjusts the direction to row for side-by-side layout */
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-text {
+  flex-grow: 1;
+  padding-right: 20px; 
+}
+
+.card-images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.card-images .car-image {
+  width: auto; /* Adjust width as needed */
+  height: 100px; /* Fixed height for images */
+  object-fit: cover; /* Ensure the image covers the area */
+  margin-left: 20px; /* Space between images if there are multiple */
+}
+
+.CarCard a {
+  text-decoration: none; /* Removes the underline */
+  color: inherit; /* The link will use the parent text color */
+  /* Add any additional styling for the link here */
+}
+
+.CarCard a:hover {
+  text-decoration: underline; /* Optionally add underline on hover for better UX */
+  color: hotpink;
+  /* Add any hover effects you might want */
+}
+
+
