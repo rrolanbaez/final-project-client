@@ -87,6 +87,11 @@ function Navbar() {
                   </Link>
                 </li>
                 <li className="nav-item">
+                  <Link className="nav-link" to='/reservations' onClick={handleNavLinkClick}>
+                    My Reservations
+                  </Link>
+                </li>
+                <li className="nav-item">
                   {/* <button className="btn" onClick={() => { logOutUser(); handleNavLinkClick(); }}>
                     Logout            --> SE VE DIFFERENTE SI ESTA ASI
                   </button> */}

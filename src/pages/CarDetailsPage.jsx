@@ -3,6 +3,8 @@ import { AuthContext } from "../context/auth.context";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { get, axiosDelete } from "../services/authService";
 
+import CreateReservation from "../components/CreateReservation";
+
 function CarDetailsPage(props) {
   const [car, setCar] = useState(null);
   const { carId } = useParams();
@@ -68,6 +70,12 @@ function CarDetailsPage(props) {
         Back to cars
       </Link>
 
+      {/* RSVP only for CLIENT user role */}
+      { user && car && user._id !== car.owner && (
+        <CreateReservation />
+      )}
+
+      {/* Only for HOST role */}
       {user && car && user._id === car.owner && (
         <>
           <Link to={`/cars/edit/${carId}`} className="btn btn-primary">

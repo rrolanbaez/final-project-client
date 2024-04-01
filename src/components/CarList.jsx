@@ -44,7 +44,8 @@ function CarList() {
                 <Link to={"/cars/addcar"} className="btn btn-primary">Add Car</Link>
             </div> */}
 
-            {user && user.role !== 'client' && ( // Only show the Add Car link to users who are not clients
+            {/* Only show the Add Car btn to HOSTS role */}
+            {user && user.role !== 'client' && ( 
                 <div className="text-center">
                     <Link to={"/cars/addcar"} className="btn btn-primary">Add Car</Link>
                 </div>

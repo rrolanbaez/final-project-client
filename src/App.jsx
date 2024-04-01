@@ -9,6 +9,8 @@ import CarList from "./components/CarList";
 import EditCarPage from "./pages/EditCarPage";
 import CarDetailsPage from "./pages/CarDetailsPage";
 import AddCar from "./components/AddCar";
+import CreateReservation from "./components/CreateReservation";
+import Reservations from "./pages/Reservations";
 
 
 function App() {
@@ -37,6 +39,9 @@ function App() {
           <Route exact path="/cars/details/:carId" element={<CarDetailsPage />} />
           <Route exact path="/cars/edit/:carId" element={<EditCarPage />} />
           <Route exact path ="/cars/addcar" element={<AddCar />}/>
+
+          {/* ANADIR RUTAS RSVPs */}
+          <Route exact path="/reservations" element={<Reservations />} />
 
 
 

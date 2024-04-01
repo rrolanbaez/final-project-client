@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { post } from "../services/authService";
 import { useNavigate } from "react-router-dom";
+import { fileChange, multiFileChange } from "../services/imageUpload";
 
 import axios from "axios";
 
@@ -13,8 +14,9 @@ function AddCar() {
     const [location, setLocation] = useState("");
     const [features, setFeatures] = useState("");
     const [basics, setBasics] = useState("");
-    const [images, setImages] = useState("");
+    const [images, setImages] = useState([]);
     const [description, setDescription] = useState("");
+    const [disabled, setDisabled] = useState(false)
 
     const navigate = useNavigate();
 
@@ -48,6 +50,22 @@ function AddCar() {
             })
             .catch((error) => console.log(error));
     };
+
+    const handlePhoto = (e) => {
+
+        setDisabled(true)
+
+        multiFileChange(e)
+            .then((response) => {
+                console.log("This is the array response", response)
+                setImages(response)
+                setDisabled(false)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+
+    }
 
     return (
 
@@ -142,12 +160,12 @@ function AddCar() {
                 <div className="mb-3">
                     <label htmlFor="images" className="form-label">Images:</label>
                     <input
-                        type="text"
+                        type="file"
                         className="form-control"
                         id="images"
                         name="images"
-                        value={images}
-                        onChange={(e) => setImages(e.target.value)}
+                        onChange={handlePhoto}
+                        multiple  //to allow multiple imgs upload
                     />
                 </div>
 
@@ -163,7 +181,7 @@ function AddCar() {
                     />
                 </div>
 
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button disabled={disabled} type="submit" className="btn btn-primary">Submit</button>
             </form>
         </div>
     )

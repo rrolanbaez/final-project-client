@@ -88,6 +88,7 @@ function LoginPage() {
                 onChange={handleTextChange}
               />
             </div>
+
             <div className="mb-3">
               <label htmlFor="password" className="form-label">Password:</label>
               <input
@@ -99,12 +100,15 @@ function LoginPage() {
                 onChange={handleTextChange}
               />
             </div>
+
             <button type="submit" className="btn btn-custom-login w-100">Log in</button>
           </form>
+
           {errorMessage && <div className="alert alert-danger" role="alert">{errorMessage}</div>}
           <p className="text-center">
             Don't have an account yet? <Link to={"/signup"}>Sign Up</Link>
           </p>
+          
         </div>
       </div>
     </div>

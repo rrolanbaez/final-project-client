@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import { AuthProvider } from './context/auth.context.jsx';
 
-// Esto va aquí ??? 
+// Bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
 

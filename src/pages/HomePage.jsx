@@ -1,4 +1,4 @@
-// FALTA MUCHO AQUI
+// FALTA EDITAR HOME PAGE COMPLETO
 const imgURL = "https://www.shutterstock.com/image-photo/road-trip-car-holiday-happy-600nw-2115317861.jpg";
 
 function HomePage() {
