@@ -39,20 +39,50 @@ function CreateReservation(){
     };
 
     return (
-        <div>
-            <h2>Create Reservation</h2>
-            <form onSubmit={handleReservation}>
-                <div>
-                    {/* showTimeSelect looks ugly, fix later */}
-                    <label>Start Date:</label>
-                    <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} showTimeSelect dateFormat="Pp"/>
-                </div>
-                <div>
-                    <label>End Date:</label>
-                    <DatePicker selected={endDate} onChange={(date) => setEndDate(date)} showTimeSelect dateFormat="Pp"/>
-                </div>
+        // <div>
+        //     <h2>Create Reservation</h2>
+        //     <form onSubmit={handleReservation}>
+        //         <div>
+        //             {/* showTimeSelect looks ugly, fix later */}
+        //             <label>Start Date:</label>
+        //             <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} showTimeSelect dateFormat="Pp"/>
+        //         </div>
+        //         <div>
+        //             <label>End Date:</label>
+        //             <DatePicker selected={endDate} onChange={(date) => setEndDate(date)} showTimeSelect dateFormat="Pp"/>
+        //         </div>
 
-                <button type="submit">Reserve Car</button>
+        //         <button type="submit" className="btn-custom-buttons">Reserve Car</button>
+        //     </form>
+        // </div>
+
+        // With Bootstrap
+        <div className="container mt-4 text-center">
+            <h2>Create Reservation</h2>
+            <form onSubmit={handleReservation} className="mt-3">
+                <div className="mb-3">
+                <label htmlFor="startDate" className="form-label">Start Date:</label>
+                <DatePicker 
+                    selected={startDate} 
+                    onChange={(date) => setStartDate(date)} 
+                    showTimeSelect 
+                    dateFormat="Pp" 
+                    className="form-control"
+                    id="startDate"
+                />
+                </div>
+                <div className="mb-3">
+                <label htmlFor="endDate" className="form-label">End Date:</label>
+                <DatePicker 
+                    selected={endDate} 
+                    onChange={(date) => setEndDate(date)} 
+                    showTimeSelect 
+                    dateFormat="Pp"
+                    className="form-control"
+                    id="endDate"
+                />
+                </div>
+                <button type="submit" className="btn btn-custom-buttons">Reserve Car</button>
             </form>
         </div>
     )

@@ -64,16 +64,15 @@ nav li {
 }
 
 /* LOG IN PAGE BTNS BOOTSTRAP */
-.btn-custom-login, .btn-custom-signup {
+.btn-custom-login, .btn-custom-signup, .btn-custom-buttons {
   background-color: #C1FF72 !important; 
   border-color: black !important;
 }
 
-.btn-custom-login:hover, .btn-custom-signup:hover {
+.btn-custom-login:hover, .btn-custom-signup:hover, .btn-custom-buttons:hover {
   background-color: #b0e967 !important;
   border-color: #b0e967 !important;
 }
-
 
 /* .SignupPage form,
 .LoginPage form {

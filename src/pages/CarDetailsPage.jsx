@@ -44,7 +44,7 @@ function CarDetailsPage(props) {
   }, [carId]);
 
   return (
-    <div className="CarDetails">
+    <div className="CarDetails car-details-container text-center">
       {car && (
         <>
           <h3>{car.make}</h3>
@@ -66,7 +66,7 @@ function CarDetailsPage(props) {
         </>
       )}
 
-      <Link to="/cars" className="btn btn-info">
+      <Link to="/cars" className="btn btn-custom-buttons">
         Back to cars
       </Link>
 
@@ -78,7 +78,7 @@ function CarDetailsPage(props) {
       {/* Only for HOST role */}
       {user && car && user._id === car.owner && (
         <>
-          <Link to={`/cars/edit/${carId}`} className="btn btn-primary">
+          <Link to={`/cars/edit/${carId}`} className="btn btn-custom-buttons">
             Edit Car
           </Link>
 
