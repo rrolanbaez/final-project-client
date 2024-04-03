@@ -1,7 +1,10 @@
 import { get } from "../services/authService"
 import { useEffect, useState } from "react"
 import { returnReadableTime } from "../services/time"
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+
+
+import EditReservationPage from "./EditReservationPage";
 
 const ReservationsPage = () => {
 
@@ -62,7 +65,12 @@ const ReservationsPage = () => {
                                 <h5 className="card-title">RSVP Details:</h5>
                                 <p className="card-text mx-3">Start time: {returnReadableTime(reservation.startDate)}</p>
                                 <p>End time: {returnReadableTime(reservation.endDate)}</p>
-                                {/* ADD OTHER DETAILS I WANT IN THE RSVP */}
+                                {/* ADD OTHER DETAILS I WANT IN THE RSVP: maybe car img and car make and model */}
+
+
+                                <Link to={`/reservations/edit/${reservation._id}`}>
+                                    <button className="btn btn-custom-buttons">Edit RSVP</button>
+                                </Link>
                             </div>
                         </div>
                     </div>

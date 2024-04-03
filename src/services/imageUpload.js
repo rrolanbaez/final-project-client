@@ -1,5 +1,6 @@
 import { post } from "./authService";
 
+// For just 1 img
 export const fileChange = (e) => {
     
     const uploadData = new FormData();
@@ -10,6 +11,7 @@ export const fileChange = (e) => {
 
 }
 
+// For multiple imgs
 export const multiFileChange = async (e) => {
    
     try {
