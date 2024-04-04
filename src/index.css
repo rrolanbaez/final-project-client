@@ -50,7 +50,9 @@ nav li {
 /* SIGN UP & LOG IN PAGE */
 .SignupPage,
 .LoginPage {
-  background: #f9eec3;
+  /* background: #f9eec3; */
+  /* background: rgb(28,224,223);
+  background: radial-gradient(circle, rgba(28,224,223,1) 0%, rgba(193,255,114,1) 100%); */
   border: 1px solid grey;
   box-shadow: 0px 2px 3px grey;
   width: 400px;
@@ -62,6 +64,16 @@ nav li {
 
   margin-top: 100px;
 }
+
+.login-page-background {
+  background: rgb(28,224,223);
+  background: linear-gradient(0deg, rgba(28,224,223,1) 0%, rgba(193,255,114,1) 100%);
+  min-height: 100vh; 
+  display: flex;
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+
 
 /* LOG IN PAGE BTNS BOOTSTRAP */
 .btn-custom-login, .btn-custom-signup, .btn-custom-buttons {
@@ -100,13 +112,45 @@ nav li {
 /* HOME PAGE */
 .home-page{
   background-color: black;
-  color: white;
+  /* color: white; */
 }
 
-.content{
+/* .content{
   background-color: #C1FF72;
   color: black;
   padding: 100px;
+} */
+
+.text-gradient {
+  background: linear-gradient(0deg, rgba(28,224,223,1) 0%, rgba(193,255,114,1) 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-gradient-primary-to-secondary {
+  background: linear-gradient(0deg, rgba(28,224,223,1) 0%, rgba(193,255,114,1) 100%);
+}
+
+.profile {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.btn-custom-grad{
+  background: linear-gradient(0deg, rgba(28,224,223,1) 0%, rgba(193,255,114,1) 100%);
+}
+
+.btn-custom-grad:hover {
+  background: linear-gradient(0deg, rgba(140, 247, 246, 1) 0%, rgba(223, 255, 144, 1) 100%) !important;
+
 }
 
 /* CAR CARD */
@@ -122,10 +166,11 @@ nav li {
   align-items: center; /* Center-align the items if the flex-direction is column */
 }
 
-.card-body {
-  width: 100%; /* Ensures the card body fills the card */
+/* THIS AFFECTS MY CARD CARD, AND RESERVATION CARD LO CAMBIA 
+/* .card-body {
+  width: 100%; 
   display: flex;
-  flex-direction: row; /* Adjusts the direction to row for side-by-side layout */
+  flex-direction: row; 
   justify-content: space-between;
   align-items: center;
 }
@@ -133,7 +178,7 @@ nav li {
 .card-text {
   flex-grow: 1;
   padding-right: 20px; 
-}
+} */
 
 .card-images {
   display: flex;

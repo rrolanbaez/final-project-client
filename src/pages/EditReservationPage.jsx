@@ -60,37 +60,42 @@ useEffect(() => {
     }, [reservationId]);
 
     return (
-        <div className="EditReservationPage">
-            <h2 className="text-center">Edit Reservation</h2>
+        <div className="container d-flex justify-content-center mt-5">
+            <div className="card p-4">
+                <h2 className="text-center mb-4">Edit Reservation</h2>
 
-            <form onSubmit={handleFormSubmit}>
-                <label>Start Time:</label>
-                {/* <input type="datetime" name="startDate" id="startDate" value={startDate} onChange={(e) => setStartDate(e.target.value)} /> */}
-                <DatePicker 
-                    selected={startDate} 
-                    onChange={(date) => setStartDate(date)} 
-                    showTimeSelect 
-                    dateFormat="Pp" 
-                    className="form-control"
-                    id="startDate"
-                />
+                <form onSubmit={handleFormSubmit}>
+                    <div className="mb-3">
+                        <label htmlFor="startDate" className="form-label">Start Time:</label>
+                        {/* <input type="datetime" name="startDate" id="startDate" value={startDate} onChange={(e) => setStartDate(e.target.value)} /> */}
+                        <DatePicker 
+                            selected={startDate} 
+                            onChange={(date) => setStartDate(date)} 
+                            showTimeSelect 
+                            dateFormat="Pp" 
+                            className="form-control"
+                            id="startDate"
+                        />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="endDate" className="form-label">End Date:</label>
+                        <DatePicker 
+                            selected={endDate} 
+                            onChange={(date) => setEndDate(date)} 
+                            showTimeSelect 
+                            dateFormat="Pp"
+                            className="form-control"
+                            id="endDate"
+                        />
+                    </div>
+                    <div className="d-flex justify-content-center">
+                        <button type="submit" className="btn btn-custom-buttons me-3">Update RSVP</button>
+                        <button className="btn btn-outline-danger" onClick={deleteReservation}>Cancel RSVP</button>
+                    </div>
 
-                <label>End Date:</label>
-                <DatePicker 
-                    selected={endDate} 
-                    onChange={(date) => setEndDate(date)} 
-                    showTimeSelect 
-                    dateFormat="Pp"
-                    className="form-control"
-                    id="endDate"
-                />
-
-                <button type="submit" className="btn btn-custom-buttons">Update RSVP</button>
-            </form>
-
-            <button className="btn btn-outline-danger" onClick={deleteReservation}>Cancel RSVP</button>
-
-            {errorMessage && <p>{errorMessage}</p>}
+                    {errorMessage && <p>{errorMessage}</p>} 
+                </form>
+            </div>
         </div>
     )
 };

@@ -92,6 +92,11 @@ function Navbar() {
                   </Link>
                 </li>
                 <li className="nav-item">
+                  <Link className="nav-link" to='/favorites' onClick={handleNavLinkClick}>
+                    My Favorites
+                  </Link>
+                </li>
+                <li className="nav-item">
                   <Link className="nav-link" to='/profile' onClick={handleNavLinkClick}>
                     My Profile
                   </Link>

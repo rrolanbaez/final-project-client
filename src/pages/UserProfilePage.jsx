@@ -39,20 +39,37 @@ function UserProfilePage() {
 
   return (
     user && (
-      <div>
-        <h2>{user.name}</h2>
-        <img src={user.image} alt="user image" />
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="user-image">Change image</label>
-          <input
-            type="file"
-            name="user-image"
-            onChange={(e) => handlePhoto(e)}
-            disabled={disabled}
-          />
-          <button type="submit" disabled={disabled}>confirm</button>
-        </form>
-      </div>
+
+        <div className="container d-flex justify-content-center">
+        <div className="card p-3 py-4 mt-5">
+            <div className="d-flex justify-content-center mt-3 mb-3">
+                <img
+                    src={user.image}
+                    alt="User Profile Img"
+                    className="rounded-circle"
+                    style={{ width: "150px", height: "150px"}}
+                />
+            </div>
+            <h6 className="card-title text-center mb-3">User Name: {user.name}</h6>
+            <p className="card-text text-center mb-3"> Email: {user.email}</p>
+            <p className="card-text text-center mb-3"> Role: {user.role}</p>
+
+            <form onSubmit={handleSubmit} className="text-center">
+                <div className="mb-3">
+                <label htmlFor="user-image">Change Profile Image:</label>
+                <input
+                    type="file"
+                    className="form-control"
+                    id="user-image"
+                    name="user-image"
+                    onChange={(e) => handlePhoto(e)}
+                    disabled={disabled}
+                />
+                </div>
+                <button type="submit" className="btn btn-custom-buttons" disabled={disabled}>Confirm</button>
+            </form>
+        </div>
+        </div>
     )
   );
   // for now I just want the user to upload/update a profile Picture, the name,

@@ -14,6 +14,8 @@ import ReservationsPage from "./pages/ReservationsPage";
 import EditReservationPage from "./pages/EditReservationPage";
 import UserProfilePage from "./pages/UserProfilePage";
 
+import FavoritesPage from "./pages/FavoritesPage";
+
 
 function App() {
   const getToken = () => {
@@ -51,6 +53,8 @@ function App() {
 
           {/* PROFILE PAGE */}
           <Route exact path="/profile" element={<UserProfilePage />} />
+
+          <Route exact path="/favorites" element={<FavoritesPage />} />
 
 
 

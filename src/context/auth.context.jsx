@@ -12,6 +12,7 @@ function AuthProvider({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
+  const [toggling, setToggling] = useState(false)
 
   const navigate = useNavigate()
 
@@ -87,6 +88,8 @@ function AuthProvider({ children }) {
         storeToken,
         authenticateUser,
         logOutUser,
+        toggling,
+        setToggling
       }}
     >
       {children}
