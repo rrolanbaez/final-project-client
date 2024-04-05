@@ -64,9 +64,23 @@ function EditCarPage() {
             .catch((err) => console.log(err));
     }, [carId]);
 
+    // const handlePhoto = (e) => {
+    //     setDisabled(true);
+    
+    //     fileChange(e)
+    //       .then((response) => {
+    //         console.log("This is the array response", response);
+    //         setNewImg(response.data.image);
+    //         setDisabled(false);
+    //       })
+    //       .catch((err) => {
+    //         console.log(err);
+    //       });
+    // };
+
     return (
         <div className="EditCarPage container mt-5">
-            <h2>Edit Car Information</h2>
+            <h2 className="text-center">Edit Car Information</h2>
 
             <form onSubmit={handleFormSubmit}>
                 <div className="mb-3">
@@ -153,7 +167,7 @@ function EditCarPage() {
                     />
                 </div>
 
-                {/* SEE HOW CAN I UPLOAD IMAGES FROM MY COMPUTER */}
+                {/* ARREGLAR ESTO: This one is for a LINK */}
                 <div className="mb-3">
                     <label htmlFor="images" className="form-label">Images:</label>
                     <input
@@ -165,6 +179,17 @@ function EditCarPage() {
                         onChange={(e) => setImages(e.target.value)}
                     />
                 </div>
+                {/* <div className="mb-3">
+                    <label htmlFor="images" className="form-label">Images:</label>
+                    <input
+                        type="file"
+                        className="form-control"
+                        id="images"
+                        name="images"
+                        onChange={handlePhoto}
+                        multiple  //to allow multiple imgs upload
+                    />
+                </div> */}
 
                 <div className="mb-3">
                     <label htmlFor="description" className="form-label">Description:</label>
@@ -177,11 +202,13 @@ function EditCarPage() {
                         onChange={(e) => setDescription(e.target.value)}
                     />
                 </div>
+                <div className="mb-4 button-group" style={{ display: 'flex', justifyContent: 'center' }}>
+                    <button type="submit" className="btn btn-custom-buttons" style={{ marginRight: '10px' }}>Update Car</button>
+                    <button type="submit" className="btn btn-danger" style={{ marginRight: '10px' }} onClick={deleteCar}>Delete Car</button>
+                </div>
 
-                <button type="submit" className="btn btn-primary">Update Car</button>
             </form>
 
-            <button type="submit" className="btn btn-danger" onClick={deleteCar}>Delete Car</button>
 
             {errorMessage && <p>{errorMessage}</p>}
         </div>

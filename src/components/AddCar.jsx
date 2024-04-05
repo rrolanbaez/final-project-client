@@ -180,8 +180,9 @@ function AddCar() {
                         onChange={(e) => setDescription(e.target.value)}
                     />
                 </div>
-
-                <button disabled={disabled} type="submit" className="btn btn-primary">Submit</button>
+                <div className="text-center mb-4">
+                    <button disabled={disabled} type="submit" className="btn btn-custom-buttons">Submit</button>
+                </div>
             </form>
         </div>
     )

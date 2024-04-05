@@ -1,11 +1,8 @@
 import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-
 import { AuthContext } from "../context/auth.context";
 import { get } from "../services/authService";
-
 import CarCard from "./CarCard";
-//import AddCar from "./AddCar";    // no quiero que salga este form en la lista de carros, CAMBIAR DESPUES
 
 function CarList() {
 
@@ -35,22 +32,18 @@ function CarList() {
 
     return (
         <div className="CarList">
+            <h2 className="text-center">Cars for Rent</h2>
             {cars.map((car) => (
                 <CarCard key={car._id} {...car} />
             ))}
 
-            {/* <AddCar refreshCars={getAllCars} /> */}
-            {/* <div className="text-center">
-                <Link to={"/cars/addcar"} className="btn btn-primary">Add Car</Link>
-            </div> */}
-
             {/* Only show the Add Car btn to HOSTS role */}
             {user && user.role !== 'client' && ( 
-                <div className="text-center">
-                    <Link to={"/cars/addcar"} className="btn btn-primary">Add Car</Link>
+                <div className="text-center mb-4">
+                    <Link to={"/cars/addcar"} className="btn btn-custom-buttons">Add Car</Link>
                 </div>
             )}
-        </div>
+        </div> 
     )
 };
 

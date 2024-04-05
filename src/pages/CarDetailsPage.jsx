@@ -4,15 +4,16 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { get, axiosDelete } from "../services/authService";
 
 import CreateReservation from "../components/CreateReservation";
+import Carousel from "react-bootstrap/Carousel";
 
 function CarDetailsPage(props) {
   const [car, setCar] = useState(null);
   const { carId } = useParams();
 
   const { user } = useContext(AuthContext);
-  //const [errorMessage, setErrorMessage] = useState("");
-
   const navigate = useNavigate();
+
+  const [ showReservationForm, setShowReservationForm ] = useState(false);
 
   const getCar = () => {
     get(`/cars/details/${carId}`)
@@ -24,10 +25,6 @@ function CarDetailsPage(props) {
       .catch((err) => console.log(err));
   };
 
-  // const handleDelete = () => {
-  //     console.log("deleting")
-  // }
-
   const deleteCar = () => {
     axiosDelete(`/cars/delete/${carId}`)
         .then(() => {
@@ -37,55 +34,74 @@ function CarDetailsPage(props) {
         .catch((err) => {
             console.log(err)
         });
-};
+  };
+
+  const toggleReservationForm = () => {
+    setShowReservationForm(!showReservationForm);
+  };
 
   useEffect(() => {
     getCar();
   }, [carId]);
 
   return (
-    <div className="CarDetails car-details-container text-center">
+    <div className="CarList car-details-container text-center">
       {car && (
-        <>
-          <h3>{car.make}</h3>
-          <p>Model: {car.model}</p>
-          <p>Year: {car.year}</p>
-          <p>$ {car.pricePerDay} / day</p>
-          <p>Pick up: {car.location}</p>
-          <p>Features: {car.features.join(", ")}</p>
-          <p>Basics: {car.basics.join(", ")}</p>
+        <div className="card" style={{ maxWidth: '600px', margin: 'auto' }}>
+          <div className="card-body">
+            <h3 className="card-title">{car.make}</h3>
+            <p className="card-text">
+            <strong>Model:</strong> {car.model}</p>
+            <p><strong>Year:</strong> {car.year}</p>
+            <p><strong>$</strong> {car.pricePerDay} <strong>/ day</strong></p>
+            <p><strong>Pick up:</strong> {car.location}</p>
+            <p><strong>Features:</strong> {car.features.join(", ")}</p>
+            <p><strong>Basics:</strong> {car.basics.join(", ")}</p>
 
-          {/* not sure if this will work for the imgs */}
-          {car.images.map((photo) => {
-            return (
-              <img src={photo} alt="car" style={{ width: "200px", height: "150px" }}/>
-            );
-          })}
+            <Carousel>
+              {car.images?.map((photo, index) => (
+                <Carousel.Item key={index} style={{ height: '250px', width: '450px' }}>   
+                  <img 
+                    className="d-block w-100 car-img" 
+                    src={photo} 
+                    alt={`${car.make} ${car.model} - ${index + 1}`}
+                  />
+                </Carousel.Item>
+              ))}
+            </Carousel>
 
-          <p>Description: {car.description}</p>
-        </>
-      )}
+            <p style={{ textAlign: 'justify'}}><strong>Description:</strong> {car.description}</p>
 
-      <Link to="/cars" className="btn btn-custom-buttons">
-        Back to cars
-      </Link>
+            <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'center', width: '100%' }}>    
+              <Link to="/cars" className="btn btn-custom-buttons" style={{ marginRight: '10px' }}>
+                Back to cars
+              </Link>
+            </div>  
 
-      {/* RSVP only for CLIENT user role */}
-      { user && car && user._id !== car.owner && (
-        <CreateReservation />
+            {/* RSVP only for CLIENT user role */}
+            { user && car && user._id !== car.owner && (
+              <>
+                <button onClick={toggleReservationForm} className="btn btn-custom-buttons" >
+                  {showReservationForm ? 'Cancel' : 'Reserve Car'}
+                </button>  
+                {showReservationForm && <CreateReservation/>}
+              </>
+            )}
+          </div>  
+        </div>
       )}
 
       {/* Only for HOST role */}
       {user && car && user._id === car.owner && (
-        <>
-          <Link to={`/cars/edit/${carId}`} className="btn btn-custom-buttons">
+        <div className="mt-3 mb-3"style={{ display: 'flex', justifyContent: 'center' }}>
+          <Link to={`/cars/edit/${carId}`} className="btn btn-custom-buttons" style={{ margin: '0 30px' }}>
             Edit Car
           </Link>
 
           <button onClick={deleteCar} className="btn btn-danger">
             Remove Car
           </button>
-        </>
+        </div>
       )}
     </div>
   );

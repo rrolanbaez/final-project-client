@@ -57,7 +57,7 @@ function Navbar() {
 
     <nav className="navbar navbar-light bg-light navbar-custom">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/" onClick={handleNavLinkClick}>
+        <Link className="navbar-brand fs-4" to="/" onClick={handleNavLinkClick}>
           Kivo
         </Link>
         <button

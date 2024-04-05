@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
+import Footer from "./components/Footer";
 
 import CarList from "./components/CarList";
 import EditCarPage from "./pages/EditCarPage";
@@ -69,6 +70,9 @@ function App() {
 
       </Routes>
 
+      
+
+      {/* <Footer /> */}
     </div>
   );
 }

@@ -108,69 +108,71 @@ function SignupPage() {
     // </div>
 
     // USING BOOTSTRAP
-    <div className="container mt-5">
-      <div className="row justify-content-center">
-        <div className="col-md-6">
-          <h1 className="text-center mb-4">Sign Up</h1>
-          <form onSubmit={handleSignupSubmit} className="mb-3">
-            <div className="mb-3">
-              <label htmlFor="email" className="form-label">Email:</label>
-              <input
-                type="email"
-                className="form-control"
-                id="email"
-                name="email"
-                value={newUser.email}
-                onChange={handleTextChange}
-              />
+    <div className="page-background">
+      <div className="container mt-5">
+        <div className="row justify-content-center">
+          <div className="col-md-6">
+            <h1 className="text-center mb-4">Sign Up</h1>
+            <form onSubmit={handleSignupSubmit} className="mb-3">
+              <div className="mb-3">
+                <label htmlFor="email" className="form-label">Email:</label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="email"
+                  name="email"
+                  value={newUser.email}
+                  onChange={handleTextChange}
+                />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="password" className="form-label">Password:</label>
+                <input
+                  type="password"
+                  className="form-control"
+                  id="password"
+                  name="password"
+                  value={newUser.password}
+                  onChange={handleTextChange}
+                />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="name" className="form-label">Name:</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="name"
+                  name="name"
+                  value={newUser.name}
+                  onChange={handleTextChange}
+                />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="role" className="form-label">Role:</label>
+                <select
+                  className="form-select"
+                  id="role"
+                  name="role"
+                  value={newUser.role}
+                  onChange={handleTextChange}
+                  required
+                >
+                  <option value="">Select your role</option>
+                  <option value="host">Host</option>
+                  <option value="client">Client</option>
+                </select>
+              </div>
+              <button type="submit" className="btn btn-outline-dark w-100">Sign Up</button>
+            </form>
+            {errorMessage && <div className="alert alert-danger" role="alert">{errorMessage}</div>}
+            <div className="text-center">
+              <p>Already have an account?</p>
+              <Link to={"/login"} className="btn btn-link">Login</Link>
             </div>
-            <div className="mb-3">
-              <label htmlFor="password" className="form-label">Password:</label>
-              <input
-                type="password"
-                className="form-control"
-                id="password"
-                name="password"
-                value={newUser.password}
-                onChange={handleTextChange}
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="name" className="form-label">Name:</label>
-              <input
-                type="text"
-                className="form-control"
-                id="name"
-                name="name"
-                value={newUser.name}
-                onChange={handleTextChange}
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="role" className="form-label">Role:</label>
-              <select
-                className="form-select"
-                id="role"
-                name="role"
-                value={newUser.role}
-                onChange={handleTextChange}
-                required
-              >
-                <option value="">Select your role</option>
-                <option value="host">Host</option>
-                <option value="client">Client</option>
-              </select>
-            </div>
-            <button type="submit" className="btn btn-custom-signup w-100">Sign Up</button>
-          </form>
-          {errorMessage && <div className="alert alert-danger" role="alert">{errorMessage}</div>}
-          <div className="text-center">
-            <p>Already have an account?</p>
-            <Link to={"/login"} className="btn btn-link">Login</Link>
           </div>
         </div>
       </div>
-    </div>
+    </div>  
   );
 }
 

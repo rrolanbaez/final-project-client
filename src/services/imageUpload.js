@@ -24,6 +24,7 @@ export const multiFileChange = async (e) => {
         })
 
         let results = await Promise.allSettled(photoPromises)
+        console.log(results)
 
         let array = results.map((response) => response.value.data.image)
 

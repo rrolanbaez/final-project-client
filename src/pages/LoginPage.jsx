@@ -72,7 +72,7 @@ function LoginPage() {
     // </div>
 
     // WITH BOOTSTRAP
-    <div className="login-page-background">
+    <div className="page-background">
       <div className="container mt-5">
         <div className="row justify-content-center">
           <div className="col-md-6">
@@ -102,7 +102,7 @@ function LoginPage() {
                 />
               </div>
 
-              <button type="submit" className="btn btn-custom-login w-100">Log in</button>
+              <button type="submit" className="btn btn-outline-dark w-100">Log in</button>
             </form>
 
             {errorMessage && <div className="alert alert-danger" role="alert">{errorMessage}</div>}

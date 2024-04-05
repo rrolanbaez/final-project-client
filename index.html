@@ -4,10 +4,31 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <title>Kivo</title>
   </head>
+  
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <!-- no borrar, este div hace que el footer siempre se quede abajo-->
+    <div class="content-wrap">
+      <script type="module" src="/src/main.jsx">
+      </script>
+    </div> 
   </body>
+    
+ 
+
+    <footer class="footer">
+      <p class="footer-text">Copyright &copy; Kivo 2024</p>
+      <p class="footer-text-name">Made by Roxangélica Rolán</p>
+      <a href="https://github.com/rrolanbaez/final-project-client" target="_blank" class="footer-link" rel="noopener noreferrer">      
+          <img src="src/images/github-mark.svg" class="footer-img" alt="GitHub" />
+      </a>
+      <a href="https://www.linkedin.com/in/roxangelicarolan/" target="_blank" class="footer-link-linkedin" rel="noopener noreferrer">
+          <img src="src/images/linkedin-svgrepo-com.svg" class="linkedin-icon" alt="Linkedin" />
+      </a>
+    </footer>
+
+  </body>
+
 </html>

@@ -43,8 +43,8 @@ function FavoriteBtn({ carId }) {
     };
 
     return (
-    <button onClick={toggleFavorite}>
-        {isFavorite ? "♥︎" : "♡"}
+    <button onClick={toggleFavorite} className="like-button">
+        {isFavorite ? "♥" : "♡"}
     </button>
     );
 }
