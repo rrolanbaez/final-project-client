@@ -39,19 +39,21 @@ const FavoritesPage = () => {
     }
 
     return (
-        <div className="container mt-5">
-            <h2 className="mb-4 text-center">My Favorite Cars</h2>
-            {favorites.length > 0 ? (
-                favorites.map(car => (
-                    <div key={car._id}>
-                        <CarCard {...car} />
-                        {/* <button onClick={() => removeFavorite(car._id)}>♥</button> */}
-                    </div>
-                ))
-            ) : (
-                <p className="text-center w-100">No favorites added yet.</p>
-            )}
-        </div>
+        <div className="CarList">
+            {/* <div className="container mt-5"> */}
+                <h2 className="mb-4 text-center">My Favorite Cars</h2>
+                {favorites.length > 0 ? (
+                    favorites.map(car => (
+                        <div key={car._id}>
+                            <CarCard {...car} />
+                            {/* <button onClick={() => removeFavorite(car._id)}>♥</button> */}
+                        </div>
+                    ))
+                ) : (
+                    <p className="text-center w-100">No favorites added yet.</p>
+                )}
+            {/* </div> */}
+        </div>    
     );
 };
 

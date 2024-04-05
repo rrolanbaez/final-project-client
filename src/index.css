@@ -311,8 +311,8 @@ body {
   justify-content: center;
   align-items: center;
   background: linear-gradient(0deg, rgba(28,224,223,1) 0%, rgba(193,255,114,1) 100%);
-  -webkit-mask: url('/final-project-client/src/images/github-mark.svg') no-repeat center / contain;
-  mask: url('/final-project-client/src/images/github-mark.svg') no-repeat center / contain;
+  -webkit-mask: url("src/images/github-mark.svg") no-repeat center / contain;
+  mask: url("src/images/github-mark.svg") no-repeat center / contain;
   width: 32px;
   height: 32px; 
 }
@@ -331,8 +331,8 @@ body {
   justify-content: center;
   align-items: center;
   background: linear-gradient(0deg, rgba(28,224,223,1) 0%, rgba(193,255,114,1) 100%);
-  -webkit-mask: url('/final-project-client/src/images/linkedin-svgrepo-com.svg') no-repeat center / contain;
-  mask: url('/final-project-client/src/images/linkedin-svgrepo-com.svg') no-repeat center / contain;
+  -webkit-mask: url("src/images/linkedin-svgrepo-com.svg") no-repeat center / contain;
+  mask: url("src/images/linkedin-svgrepo-com.svg") no-repeat center / contain;
   width: 32px;
   height: 32px; 
 }
