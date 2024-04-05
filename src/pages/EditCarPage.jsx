@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-
+import { multiFileChange } from "../services/imageUpload";
 import { get, put, axiosDelete } from "../services/authService";
 
 function EditCarPage() {
@@ -15,6 +15,7 @@ function EditCarPage() {
     const [images, setImages] = useState("");
     const [description, setDescription] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+    const [disabled, setDisabled] = useState(false);
 
     const { carId } = useParams();
 
@@ -64,19 +65,19 @@ function EditCarPage() {
             .catch((err) => console.log(err));
     }, [carId]);
 
-    // const handlePhoto = (e) => {
-    //     setDisabled(true);
+    const handlePhoto = (e) => {
+        setDisabled(true);
     
-    //     fileChange(e)
-    //       .then((response) => {
-    //         console.log("This is the array response", response);
-    //         setNewImg(response.data.image);
-    //         setDisabled(false);
-    //       })
-    //       .catch((err) => {
-    //         console.log(err);
-    //       });
-    // };
+        multiFileChange(e)
+            .then((response) => {
+                console.log("This is the array response", response)
+                setImages(response)
+                setDisabled(false)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    };
 
     return (
         <div className="EditCarPage container mt-5">
@@ -168,7 +169,7 @@ function EditCarPage() {
                 </div>
 
                 {/* ARREGLAR ESTO: This one is for a LINK */}
-                <div className="mb-3">
+                {/* <div className="mb-3">
                     <label htmlFor="images" className="form-label">Images:</label>
                     <input
                         type="text"
@@ -178,8 +179,8 @@ function EditCarPage() {
                         value={images}
                         onChange={(e) => setImages(e.target.value)}
                     />
-                </div>
-                {/* <div className="mb-3">
+                </div> */}
+                <div className="mb-3">
                     <label htmlFor="images" className="form-label">Images:</label>
                     <input
                         type="file"
@@ -189,7 +190,7 @@ function EditCarPage() {
                         onChange={handlePhoto}
                         multiple  //to allow multiple imgs upload
                     />
-                </div> */}
+                </div>
 
                 <div className="mb-3">
                     <label htmlFor="description" className="form-label">Description:</label>
