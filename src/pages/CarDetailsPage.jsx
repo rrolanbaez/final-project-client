@@ -45,7 +45,7 @@ function CarDetailsPage(props) {
   }, [carId]);
 
   return (
-    <div className="CarList car-details-container text-center">
+    <div className="CarList car-details-container text-center mb-3">
       {car && (
         <div className="card" style={{ maxWidth: '600px', margin: 'auto' }}>
           <div className="card-body">
@@ -60,7 +60,7 @@ function CarDetailsPage(props) {
 
             <Carousel>
               {car.images?.map((photo, index) => (
-                <Carousel.Item key={index} style={{ height: '250px', width: '450px' }}>   
+                <Carousel.Item key={index} style={{ height: '250px' }}>   
                   <img 
                     className="d-block w-100 car-img" 
                     src={photo} 
@@ -70,7 +70,7 @@ function CarDetailsPage(props) {
               ))}
             </Carousel>
 
-            <p style={{ textAlign: 'justify'}}><strong>Description:</strong> {car.description}</p>
+            <p className="mt-3"style={{ textAlign: 'justify'}}><strong>Description:</strong> {car.description}</p>
 
             <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'center', width: '100%' }}>    
               <Link to="/cars" className="btn btn-custom-buttons" style={{ marginRight: '10px' }}>

@@ -31,7 +31,13 @@ function CarList() {
     }, [user]);
 
     return (
-        <div className="CarList">
+        <div className="CarList" style={{
+            // background: linear-gradient( rgba(28,224,223,1), rgba(193,255,114,1)),
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            backgroundAttachment: 'fixed',
+            minHeight: '100vh', // Ensure it covers at least the full viewport height
+        }}>
             <h2 className="text-center">Cars for Rent</h2>
             {cars.map((car) => (
                 <CarCard key={car._id} {...car} />

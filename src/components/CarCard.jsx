@@ -56,7 +56,7 @@ function CarCard({
                 <div className="col-md-6">
                   <Carousel>
                       {images?.map((photo, index) => (
-                        <Carousel.Item key={index} style={{ height: '250px', objectFit: 'cover' }}>   
+                        <Carousel.Item key={index} style={{ height: '250px' }}>   
                           <img 
                             className="d-block w-100 car-img" 
                             src={photo} 

@@ -1,1 +1,0 @@
-// Add a Favorite btn to the car card, so that the user can then see a list of liked cars. 
